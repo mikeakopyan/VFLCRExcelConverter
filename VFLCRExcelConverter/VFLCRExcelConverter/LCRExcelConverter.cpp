@@ -76,7 +76,11 @@ int main(int argc, char **argv)
         if (str.length() != 0)
         {
             string outLCR = processLineForLCR(str);
-            oLCRFile << outLCR << ";";
+            if (outLCR.size() > 0)
+            {
+                //cout << str << endl;
+                oLCRFile << outLCR << ";";
+            }
             vector<string> outCNC = processLineForGCode(str);
             for (size_t i = 0; i < outCNC.size(); i++)
             {
@@ -102,8 +106,12 @@ string processLineForLCR(string inputLine)
     vector<string> tokens = split(inputLine, delim);
     string command;
     string args;
-
-    for (unsigned int i = 1; i<tokens.size(); i++)
+    int totalTokens = 0;
+    for (unsigned int i = 0; i <= 6; i++)
+        totalTokens += tokens[i].size();
+    if (totalTokens == 0)
+        return string();
+    for (unsigned int i = 1; i<=6; i++)
     {
         if (tokens[i].size() == 0)
             command += absent[i - 1];
@@ -136,7 +144,7 @@ vector<string> processLineForGCode(string inputLine)
     vector<string> result;
     vector<string> tokens = split(inputLine, delim);
     bool generateResult = false;
-    for (unsigned int i = 7; i < tokens.size(); i++)
+    for (unsigned int i = 7; i <= 11; i++)
     {
         if (tokens[i].size() == 0)
             continue;
