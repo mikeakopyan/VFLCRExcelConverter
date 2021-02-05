@@ -45,3 +45,12 @@ This batch file also copies .vflc and .cnc files into:
 VF-00001-0001_L00001_R01_P01.vflc
 VF-00001-0001_L00001_R01_P01.cnc
 
+===== How to use VFLCR_Box.xlsx
+VFLCR_Box.xlsx file has been created to generate LCR and  G-code files to lase perimeter of the box.
+1. Open VFLCR_Box.xlsx file and make sure you are on VFLCR_Box_X sheet.
+2. Change parameters outlined in yellow if needed.
+3. Save this sheet in CSV format.
+4. Switch to VFLCR_Box_Y sheet and save it CSV format.
+5. Run VFLCRExcelConverter progam on each CSV file. Or, you type "VFLCR_Box.bat VFLCR_Box" This batch will generate 4 files.
+
+
